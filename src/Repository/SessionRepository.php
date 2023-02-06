@@ -39,6 +39,34 @@ class SessionRepository extends ServiceEntityRepository
         }
     }
 
+    public function findCurrentSessions(): array
+    {
+        $query = $this->getEntityManager()->createQuery('SELECT session FROM App\Entity\Session session
+                WHERE CURRENT_DATE() >= session.dateDebut AND CURRENT_DATE() <= session.dateFin');
+
+        return $query->getResult();   
+
+    }
+    public function findPastSessions(): array
+    {
+        $query = $this->getEntityManager()->createQuery('SELECT session FROM App\Entity\Session session
+                WHERE CURRENT_DATE() > session.dateFin');
+
+        return $query->getResult();   
+
+    }
+
+    public function findFutureSessions(): array
+    {
+        $query = $this->getEntityManager()->createQuery('SELECT session FROM App\Entity\Session session
+                WHERE CURRENT_DATE() < session.dateDebut');
+
+        return $query->getResult();   
+
+    }
+
+
+
 //    /**
 //     * @return Session[] Returns an array of Session objects
 //     */

@@ -6,7 +6,146 @@
 
 <h1>Accueil</h1>
 
+<br>
+
 <h2> Bienvenue, user </h2>
+
+<br>
+
+<table>
+    <caption>TOUTES LES SESSIONS</caption>
+    <thead>
+        <th>Statut</th>
+        <th>Formation</th>
+        <th>Session</th>
+        <th>Date de debut</th>
+        <th>Date de fin</th>
+        <th>Inscrits</th>
+        <th>Action</th>
+    </thead>    
+{% for session in  sessions %}
+
+    <tr>
+        <td>{% if session.stagiaire|length == session.nbrePlaces %}
+        SESSION COMPLETE
+        {% endif %}
+        </td>
+        <td>{{ session.formation }} </td>
+        <td>{{ session }} </td>
+        <td>{{ session.dateDebut|date("d/m/Y") }} </td>
+        <td>{{ session.dateFin|date("d/m/Y") }} </td>
+        <td>{{ session.stagiaire|length}}/ {{ session.nbrePlaces}} </td>
+        <td> </td> 
+    </tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<table>
+    <caption>SESSIONS EN COURS</caption>
+    <thead>
+        <th>Statut</th>
+        <th>Formation</th>
+        <th>Session</th>
+        <th>Date de debut</th>
+        <th>Date de fin</th>
+        <th>Inscrits</th>
+        <th>Action</th>
+    </thead>
+    <tbody>    
+{% for current_session in  current_sessions %}
+
+    <tr>
+        <td>{% if current_session.stagiaire|length == current_session.nbrePlaces %}
+        SESSION COMPLETE
+        {% endif %}
+        </td>
+        <td>{{ current_session.formation }} </td>
+        <td>{{ current_session }} </td>
+        <td>{{ current_session.dateDebut|date("d/m/Y") }} </td>
+        <td>{{ current_session.dateFin|date("d/m/Y") }} </td>
+        <td>{{ current_session.stagiaire|length}}/ {{ current_session.nbrePlaces}} </td>
+        <td> </td> 
+    </tr>
+
+{% endfor %}
+    </tbody>
+</table>
+
+<br>
+
+<table>
+    <caption>SESSIONS À VENIR</caption>
+    <thead>
+        <th>Statut</th>
+        <th>Formation</th>
+        <th>Session</th>
+        <th>Date de debut</th>
+        <th>Date de fin</th>
+        <th>Inscrits</th>
+        <th>Action</th>
+    </thead>  
+    <tbody>  
+{% for future_session in  future_sessions %}
+
+    <tr>
+        <td>{% if future_session.stagiaire|length == future_session.nbrePlaces %}
+        SESSION COMPLETE
+        {% endif %}
+        </td>
+        <td>{{ future_session.formation }} </td>
+        <td>{{ future_session }} </td>
+        <td>{{ future_session.dateDebut|date("d/m/Y") }} </td>
+        <td>{{ future_session.dateFin|date("d/m/Y") }} </td>
+        <td>{{ future_session.stagiaire|length}}/ {{ future_session.nbrePlaces}} </td>
+        <td> </td> 
+    </tr>
+
+{% endfor %}
+    </tbody>
+
+</table>
+
+<br> 
+
+<table>
+    <caption>SESSIONS PASSÉES</caption>
+    <thead>
+        <th>Statut</th>
+        <th>Formation</th>
+        <th>Session</th>
+        <th>Date de debut</th>
+        <th>Date de fin</th>
+        <th>Inscrits</th>
+        <th>Action</th>
+    </thead> 
+    <tbody>    
+{% for past_session in  past_sessions %}
+
+    <tr>
+        <td>{% if past_session.stagiaire|length == past_session.nbrePlaces %}
+        SESSION COMPLETE
+        {% endif %}
+        </td>
+        <td>{{ past_session.formation }} </td>
+        <td>{{ past_session }} </td>
+        <td>{{ past_session.dateDebut|date("d/m/Y") }} </td>
+        <td>{{ past_session.dateFin|date("d/m/Y") }} </td>
+        <td>{{ past_session.stagiaire|length}}/ {{ past_session.nbrePlaces}} </td>
+        <td> </td> 
+    </tr>
+
+{% endfor %}
+    </tbody>
+
+</table>
+
+<br>
+
+
 
 
 
