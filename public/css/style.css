@@ -26,10 +26,11 @@ ul {
     position: absolute;
     width: 1295px;
     height: 30px;
+    list-style-type: none;
 
 }
 
-a {
+nav a {
     text-decoration: none;
     font-family: 'Outfit';
     font-style: normal;
@@ -40,6 +41,11 @@ a {
 
     color: #FCFCFC;
 
+}
+
+nav a:hover{
+
+    color:rgba(120, 153, 212, 0.53)
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -108,12 +114,62 @@ tbody{
 }
 
 td{
+    padding: 5px;
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 30px;
 
     color: #FCFCFC;
 }
+
+td a{
+    text-decoration: none;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+
+    color: #FCFCFC;
+} 
+
+td a:hover{
+
+    color:rgba(120, 153, 212, 0.53)
+}
+
+div.description{
+    margin-top: 15px;
+    width: 1323px;
+    background: #000000;
+}
+
+div.description p{
+
+    padding: 15px;
+    margin: 0px;    
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+
+    color: #FCFCFC;
+}
+
+div.description p.formateur{
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+
+table.session_description{
+
+    width: 659px;
+}
+
 

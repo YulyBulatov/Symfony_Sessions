@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Session {{ session }} {% endblock %}
+
+{% block body %}
+
+<div class="description">
+
+<p class="formateur" >Formateur référent : {{ session.formateur}}</p>
+
+<p>Date de début: {{ session.dateDebut|date("d/m/Y") }}</p>
+
+<p>Date de fin: {{ session.dateFin|date("d/m/Y") }}</p>
+
+<p>Nombre de places: {{ session.nbrePlaces }}</p>
+
+<p>Nombre de places disponibles: {{ session.nbrePlaces - session.stagiaire|length}}</p>
+
+<p>Nombre de modules: {{ session.programmes|length }}</p>
+</div>
+
+<table class="session_description">
+<caption> Stagiaires inscrits </caption>
+    <thead>
+        <th>Stagiaire</th>
+        <th>Désinscrire</th>
+    </thead>
+    <tbody>
+
+    {% for stagiaire in session.stagiaire %}
+
+    <tr>
+        <td>{{stagiaire}}</td>
+        <td> </td>
+    </tr>
+        
+    {% endfor %}
+
+<table class="session_description">
+<caption> Stagiaires non-inscrits </caption>
+    <thead>
+        <th>Stagiaire</th>
+        <th>Inscrire</th>
+    </thead>
+    <tbody>
+
+    {% for stagiaire in stagiaires %}
+
+    <tr>
+        <td>{{stagiaire}}</td>
+        <td> </td>
+    </tr>
+        
+    {% endfor %}    
+
+
+{% endblock %}

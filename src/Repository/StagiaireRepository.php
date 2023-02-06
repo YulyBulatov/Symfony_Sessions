@@ -39,6 +39,20 @@ class StagiaireRepository extends ServiceEntityRepository
         }
     }
 
+    public function findNonInscrits($id): array
+    {
+        $query = $this->getEntityManager()->createQuery('SELECT stagiaires 
+        FROM App\Entity\Stagiaire stagiaires
+        WHERE 0 =
+        (SELECT count(stagiaire_id)
+        FROM session_stagiaire
+        WHERE session_id = :id)');
+        $query->setParameter('id', $id);
+
+        return $query->getResult();
+
+    }
+
 //    /**
 //     * @return Stagiaire[] Returns an array of Stagiaire objects
 //     */

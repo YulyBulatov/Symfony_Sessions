@@ -31,7 +31,7 @@
         {% endif %}
         </td>
         <td>{{ session.formation }} </td>
-        <td>{{ session }} </td>
+        <td><a href="{{path('show_session', {id: session.id})}}"> {{ session }}</a></td>
         <td>{{ session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ session.dateFin|date("d/m/Y") }} </td>
         <td>{{ session.stagiaire|length}}/ {{ session.nbrePlaces}} </td>
@@ -64,7 +64,7 @@
         {% endif %}
         </td>
         <td>{{ current_session.formation }} </td>
-        <td>{{ current_session }} </td>
+        <td><a href="{{path('show_session', {id: current_session.id})}}"> {{ current_session }}</a></td>
         <td>{{ current_session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ current_session.dateFin|date("d/m/Y") }} </td>
         <td>{{ current_session.stagiaire|length}}/ {{ current_session.nbrePlaces}} </td>
@@ -97,7 +97,7 @@
         {% endif %}
         </td>
         <td>{{ future_session.formation }} </td>
-        <td>{{ future_session }} </td>
+        <td><a href="{{path('show_session', {id: future_session.id})}}"> {{ future_session }}</a></td>
         <td>{{ future_session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ future_session.dateFin|date("d/m/Y") }} </td>
         <td>{{ future_session.stagiaire|length}}/ {{ future_session.nbrePlaces}} </td>
@@ -131,7 +131,7 @@
         {% endif %}
         </td>
         <td>{{ past_session.formation }} </td>
-        <td>{{ past_session }} </td>
+        <td><a href="{{path('show_session', {id: past_session.id})}}"> {{ past_session }}</a> </td>
         <td>{{ past_session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ past_session.dateFin|date("d/m/Y") }} </td>
         <td>{{ past_session.stagiaire|length}}/ {{ past_session.nbrePlaces}} </td>
