@@ -1,19 +1,19 @@
-/* body {
+body {
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     padding: 10px;
     gap: 10px;
 
-    position: absolute;
+    
 
     background: #7D6D61;
     
 }
 
 nav {
-    position: absolute;
+    
     width: 1440px;
     height: 75px;
     background: rgba(0, 0, 0, 0.42);
@@ -31,7 +31,7 @@ ul {
 
 a {
     text-decoration: none;
-    font-family: 'Arial';
+    font-family: 'Outfit';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -42,16 +42,78 @@ a {
 
 }
 
-h1 {
-    position: absolute;
+h1, h2, h3, h4, h5, h6{
+
+    align-self: flex-start;
     width: 230px;
     height: 81px;
-    font-family: 'Arial';
+    font-family: 'Outfit';
     font-style: normal;
     font-weight: 400;
     font-size: 64px;
     line-height: 81px;
+    color: #FCFCFC;
+}
 
+h2 {
 
-color: #FCFCFC;
-} */
+    width: 247px;
+    height: 45px;
+    font-size: 35.5011px;
+    line-height: 45px;
+
+}
+
+table{
+    align-self: flex-start;
+    width: 1400px;
+    filter: drop-shadow(-13px 22px 4px rgba(0, 0, 0, 0.25));
+
+}
+
+caption {
+    width: 364px;
+    height: 60px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 60px;
+
+    color: #FCFCFC;
+}
+
+thead {
+
+    box-sizing: border-box;
+    background: rgba(120, 153, 212, 0.53);
+    border: 2px solid #FCFCFC;
+
+}
+
+th{
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+
+    color: #FCFCFC;
+
+}
+
+tbody{
+    background: #000000;
+}
+
+td{
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+
+    color: #FCFCFC;
+}
+
