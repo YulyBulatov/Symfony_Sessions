@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Stagiaire;
+use App\Entity\Session;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -41,15 +42,35 @@ class StagiaireRepository extends ServiceEntityRepository
 
     public function findNonInscrits($id): array
     {
-        $query = $this->getEntityManager()->createQuery('SELECT stagiaires 
-        FROM App\Entity\Stagiaire stagiaires
-        WHERE 0 =
-        (SELECT count(stagiaire_id)
-        FROM session_stagiaire
-        WHERE session_id = :id)');
-        $query->setParameter('id', $id);
+        $query1 = $this->getEntityManager()->createQueryBuilder();
+        $query2 = $this->getEntityManager()->createQueryBuilder();
 
-        return $query->getResult();
+        $subquery = $query1->select('s.id')
+        ->from('App\Entity\Stagiaire', 's')
+        ->leftjoin('s.sessions', 'sessions')
+        ->where($query1->expr()->eq('sessions.id', ':id'))
+        ->setParameter('id', $id)
+        ->getQuery()
+        ->getResult();
+
+        $ids = [];
+
+        foreach ($subquery as $ids_inscrits){
+
+            foreach($ids_inscrits as $id_inscrits){
+
+                $ids[]=$id_inscrits;
+
+            }
+                
+        }
+        
+
+        return $query2->select('s')
+            ->from('App\Entity\Stagiaire', 's')
+            ->where($query2->expr()->notIn('s.id', $ids))
+            ->getQuery()
+            ->getResult();
 
     }
 
