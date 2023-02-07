@@ -78,7 +78,7 @@ table{
 }
 
 caption {
-    width: 390px;
+    text-align: left;
     height: 60px;
     font-family: 'Outfit';
     font-style: normal;
@@ -140,6 +140,11 @@ td a:hover{
     color:rgba(120, 153, 212, 0.53)
 }
 
+td.duree{
+
+    text-align: center;
+}
+
 div.description{
     margin-top: 15px;
     width: 1323px;
@@ -173,3 +178,16 @@ table.session_description{
 }
 
 
+
+table.session_description_right{
+
+    width: 659px;
+}
+
+div.tables_description{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

@@ -39,6 +39,40 @@ class CoursRepository extends ServiceEntityRepository
         }
     }
 
+    public function findNonProgrammed($id): array
+    {
+        $query1 = $this->getEntityManager()->createQueryBuilder();
+        $query2 = $this->getEntityManager()->createQueryBuilder();
+
+        $subquery = $query1->select('c.id')
+        ->from('App\Entity\Cours', 'c')
+        ->leftjoin('c.programmes', 'programmes')
+        ->leftJoin('programmes.session','session')
+        ->where($query1->expr()->eq('session.id', ':id'))
+        ->setParameter('id', $id)
+        ->getQuery()
+        ->getResult();
+
+        $ids = [];
+
+        foreach ($subquery as $ids_programmed){
+
+            foreach($ids_programmed as $id_programmed){
+
+                $ids[]=$id_programmed;
+
+            }
+                
+        }
+        
+
+        return $query2->select('c')
+            ->from('App\Entity\Cours', 'c')
+            ->where($query2->expr()->notIn('c.id', $ids))
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Cours[] Returns an array of Cours objects
 //     */

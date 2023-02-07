@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CoursRepository;
 use App\Repository\SessionRepository;
 use App\Repository\StagiaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,11 +20,12 @@ class SessionController extends AbstractController
     }
 
     #[Route('/session/{id}', name: 'show_session')]
-    public function showSession($id, SessionRepository $sessionRepository, StagiaireRepository $stagiaireRepository): Response
+    public function showSession($id, SessionRepository $sessionRepository, StagiaireRepository $stagiaireRepository, CoursRepository $coursRepository): Response
     {
         return $this->render('session/show.html.twig', [
             'session' => $sessionRepository->find($id),
-            'stagiaires' => $stagiaireRepository->findNonInscrits($id)
+            'stagiaires' => $stagiaireRepository->findNonInscrits($id),
+            'cours' => $coursRepository->findNonProgrammed($id)
         ]);
     }
 

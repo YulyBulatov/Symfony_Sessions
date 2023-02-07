@@ -19,8 +19,9 @@
 <p>Nombre de modules: {{ session.programmes|length }}</p>
 </div>
 
+<div class="tables_description">
 <table class="session_description">
-<caption> Stagiaires inscrits </caption>
+<caption>Stagiaires inscrits</caption>
     <thead>
         <th>Stagiaire</th>
         <th>Désinscrire</th>
@@ -35,9 +36,34 @@
     </tr>
         
     {% endfor %}
+    </tbody>
+</table>
+
+<table class="session_description_right">
+<caption> Programme </caption>
+    <thead>
+        <th>Module</th>
+        <th>Catégorie</th>
+        <th>Durée</th>
+        <th>Déprogrammer</th>
+    </thead>
+    <tbody>
+
+    {% for module in session.programmes %}
+
+    <tr>
+        <td>{{module.cours}}</td>
+        <td>{{module.cours.categorie}} </td>
+        <td class="duree">{{module.duree}}</td>
+        <td> </td>
+    </tr>
+        
+    {% endfor %}
+    </tbody>
+</table>
 
 <table class="session_description">
-<caption> Stagiaires non inscrits </caption>
+<caption>Stagiaires non inscrits</caption>
     <thead>
         <th>Stagiaire</th>
         <th>Inscrire</th>
@@ -51,7 +77,35 @@
         <td> </td>
     </tr>
         
-    {% endfor %}    
+    {% endfor %}
+    </tbody>
+</table>  
+
+<table class="session_description_right">
+<caption> Modules non programées </caption>
+    <thead>
+        <th>Module</th>
+        <th>Catégorie</th>
+        <th>Durée</th>
+        <th>Programmer</th>
+    </thead>
+    <tbody>
+
+    {% for module in cours %}
+
+    <tr>
+        <td>{{module}}</td>
+        <td>{{module.categorie}} </td>
+        <td><input type="text" name"duree"></input> jours </td>
+        <td><input type="submit" name="submit"></input></td>
+    </tr>
+        
+    {% endfor %}
+    </tbody>
+</table>
+
+
+</div>
 
 
 {% endblock %}
