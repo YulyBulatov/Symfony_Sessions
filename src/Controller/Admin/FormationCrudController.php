@@ -17,6 +17,8 @@ class FormationCrudController extends AbstractCrudController
         return Formation::class;
     }
 
+    
+
     /*
     public function configureFields(string $pageName): iterable
     {

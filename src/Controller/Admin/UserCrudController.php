@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
@@ -22,7 +23,7 @@ class UserCrudController extends AbstractCrudController
 {
     return [
         'email',
-        'password',
+        Field::new('password')->onlyOnForms(),
         ArrayField::new('roles'),
     ];
 }

@@ -7,6 +7,7 @@ use App\Entity\Cours;
 use App\Entity\Session;
 use App\Entity\Categorie;
 use App\Entity\Formateur;
+use App\Entity\Formation;
 use App\Entity\Programme;
 use App\Entity\Stagiaire;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,8 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 /**
  * @IsGranted("ROLE_ADMIN")
@@ -69,6 +70,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Session', 'fa fa-graduation-cap', Session::class);
         yield MenuItem::linkToCrud('Stagiaire', 'fa fa-user-graduate', Stagiaire::class);
         yield MenuItem::linkToCrud('User', 'fa fa-user', User::class);
+        yield MenuItem::linkToCrud('Formation', 'fa fa-award', Formation::class);
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
