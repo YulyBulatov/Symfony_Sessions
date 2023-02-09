@@ -61,16 +61,16 @@ class DashboardController extends AbstractDashboardController
     }
 
     public function configureMenuItems(): iterable
-    {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+    {   
+        yield MenuItem::linkToCrud('User', 'fa fa-user', User::class);
+        yield MenuItem::linkToCrud('Stagiaire', 'fa fa-user-graduate', Stagiaire::class);
+        yield MenuItem::linkToCrud('Formateur', 'fa fa-person-chalkboard', Formateur::class);
+        yield MenuItem::linkToCrud('Formation', 'fa fa-award', Formation::class); 
+        yield MenuItem::linkToCrud('Session', 'fa fa-graduation-cap', Session::class);
         yield MenuItem::linkToCrud('Categorie', 'fa fa-list-ol', Categorie::class);
         yield MenuItem::linkToCrud('Courses', 'fa fa-book', Cours::class);
-        yield MenuItem::linkToCrud('Formateur', 'fa fa-person-chalkboard', Formateur::class);
         yield MenuItem::linkToCrud('Programme', 'fa fa-file-o', Programme::class);
-        yield MenuItem::linkToCrud('Session', 'fa fa-graduation-cap', Session::class);
-        yield MenuItem::linkToCrud('Stagiaire', 'fa fa-user-graduate', Stagiaire::class);
-        yield MenuItem::linkToCrud('User', 'fa fa-user', User::class);
-        yield MenuItem::linkToCrud('Formation', 'fa fa-award', Formation::class);
+        yield MenuItem::linkToRoute('Accueil', 'fa fa-home', 'app_home');
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
