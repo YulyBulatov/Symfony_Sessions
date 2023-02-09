@@ -51,7 +51,6 @@ nav a:hover{
 h1, h2, h3, h4, h5, h6{
 
     align-self: flex-start;
-    width: 230px;
     height: 81px;
     font-family: 'Outfit';
     font-style: normal;
@@ -149,6 +148,11 @@ div.description{
     margin-top: 15px;
     width: 1323px;
     background: #000000;
+}
+
+div.description#stagiaire{
+
+    align-self: flex-start;
 }
 
 div.description p{

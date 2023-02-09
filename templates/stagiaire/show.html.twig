@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Stagiaire {{ stagiaire }} {% endblock %}
+
+{% block body %}
+
+<h1> {{ stagiaire.prenom }} {{stagiaire.nom|upper}} </h1>
+
+<h2>Informations</h2>
+
+<div class="description" id="stagiaire">
+
+<p>Téléphone: {{stagiaire.telephone}}</p>
+
+<p>Email: {{stagiaire.email}}</p>
+
+<p>Adresse: {{stagiaire.adresse}}, {{stagiaire.ville}} </p>
+
+</div>
+
+
+
+<table>
+    <caption>Sessions</caption>
+    <thead>
+        <th>Statut</th>
+        <th>Formation</th>
+        <th>Session</th>
+        <th>Date de debut</th>
+        <th>Date de fin</th>
+        <th>Inscrits</th>
+        <th>Action</th>
+    </thead>    
+{% for session in  stagiaire.sessions %}
+
+    <tr>
+        <td>{% if session.stagiaire|length == session.nbrePlaces %}
+        SESSION COMPLETE
+        {% endif %}
+        </td>
+        <td>{{ session.formation }} </td>
+        <td><a href="{{path('show_session', {id: session.id})}}"> {{ session }}</a></td>
+        <td>{{ session.dateDebut|date("d/m/Y") }} </td>
+        <td>{{ session.dateFin|date("d/m/Y") }} </td>
+        <td>{{ session.stagiaire|length}}/ {{ session.nbrePlaces}} </td>
+        <td> </td> 
+    </tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

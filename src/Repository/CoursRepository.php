@@ -53,6 +53,9 @@ class CoursRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult();
 
+        if (!empty($subquery)) {
+        
+
         $ids = [];
 
         foreach ($subquery as $ids_programmed){
@@ -71,6 +74,14 @@ class CoursRepository extends ServiceEntityRepository
             ->where($query2->expr()->notIn('c.id', $ids))
             ->getQuery()
             ->getResult();
+        }
+        
+        else{
+            return $query2->select('c')
+                ->from('App\Entity\Cours', 'c')
+                ->getQuery()
+                ->getResult();
+        }
     }
 
 //    /**

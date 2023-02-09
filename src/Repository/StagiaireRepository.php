@@ -53,6 +53,8 @@ class StagiaireRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult();
 
+        if(!empty($subquery)) {
+
         $ids = [];
 
         foreach ($subquery as $ids_inscrits){
@@ -71,6 +73,15 @@ class StagiaireRepository extends ServiceEntityRepository
             ->where($query2->expr()->notIn('s.id', $ids))
             ->getQuery()
             ->getResult();
+    }
+        else{
+
+            return $query2->select('s')
+                ->from('App\Entity\Stagiaire','s')
+                ->getQuery()
+                ->getResult();
+
+        }
 
     }
 
