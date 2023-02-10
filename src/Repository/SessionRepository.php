@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Session;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Repository\StagiaireRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Session>
@@ -64,6 +65,15 @@ class SessionRepository extends ServiceEntityRepository
         return $query->getResult();   
 
     }
+/* 
+    public function removeStagiaireSession($id_stagiare, $id_session, StagiaireRepository $stagiaireRepository)
+    {
+        $stagiaire = $stagiaireRepository->find($id_stagiare);
+
+        return $query = $this->getEntityManager()->createQueryBuilder()->delete('')
+    }
+ */
+    
 
 
 

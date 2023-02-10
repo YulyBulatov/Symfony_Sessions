@@ -35,7 +35,16 @@
         <td>{{ session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ session.dateFin|date("d/m/Y") }} </td>
         <td>{{ session.stagiaire|length}}/ {{ session.nbrePlaces}} </td>
-        <td> </td> 
+        <td>
+        {% if is_granted('ROLE_ADMIN') %}
+        
+        <a href="{{ ea_url()
+        .setController('App\\Controller\\Admin\\SessionCrudController')
+        .setAction('edit')
+        .setEntityId(session.id)}}"><i class="fa fa-edit" aria-hidden="true" style="color:#FF9505"></i> </a> 
+
+        {% endif %}
+        </td> 
     </tr>
 
 {% endfor %}
@@ -68,7 +77,16 @@
         <td>{{ current_session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ current_session.dateFin|date("d/m/Y") }} </td>
         <td>{{ current_session.stagiaire|length}}/ {{ current_session.nbrePlaces}} </td>
-        <td> </td> 
+        <td>
+        {% if is_granted('ROLE_ADMIN') %}
+        
+        <a href="{{ ea_url()
+        .setController('App\\Controller\\Admin\\SessionCrudController')
+        .setAction('edit')
+        .setEntityId(current_session.id)}}"><i class="fa fa-edit" aria-hidden="true" style="color:#FF9505"></i> </a> 
+
+        {% endif %}
+         </td> 
     </tr>
 
 {% endfor %}
@@ -101,7 +119,16 @@
         <td>{{ future_session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ future_session.dateFin|date("d/m/Y") }} </td>
         <td>{{ future_session.stagiaire|length}}/ {{ future_session.nbrePlaces}} </td>
-        <td> </td> 
+        <td>
+        {% if is_granted('ROLE_ADMIN') %}
+        
+        <a href="{{ ea_url()
+        .setController('App\\Controller\\Admin\\SessionCrudController')
+        .setAction('edit')
+        .setEntityId(future_session.id)}}"><i class="fa fa-edit" aria-hidden="true" style="color:#FF9505"></i> </a> 
+
+        {% endif %}
+        </td> 
     </tr>
 
 {% endfor %}
@@ -135,7 +162,16 @@
         <td>{{ past_session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ past_session.dateFin|date("d/m/Y") }} </td>
         <td>{{ past_session.stagiaire|length}}/ {{ past_session.nbrePlaces}} </td>
-        <td> </td> 
+        <td>
+        {% if is_granted('ROLE_ADMIN') %}
+        
+        <a href="{{ ea_url()
+        .setController('App\\Controller\\Admin\\SessionCrudController')
+        .setAction('edit')
+        .setEntityId(past_session.id)}}"><i class="fa fa-edit" aria-hidden="true" style="color:#FF9505"></i> </a> 
+
+        {% endif %}
+        </td> 
     </tr>
 
 {% endfor %}
