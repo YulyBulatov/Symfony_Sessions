@@ -28,7 +28,12 @@
     <td>{{ stagiaire.ville }}</td>
     <td>{{ stagiaire.email }} </td>
     <td>{{ stagiaire.telephone }}</td>
-    <td> </td>
+    <td>
+    {% if is_granted('ROLE_ADMIN') %}
+    
+    <a href="{{path('remove_stagiaire', {id: stagiaire.id})}} "><i class="fa fa-remove" aria-hidden="true"></i></a>
+    {% endif %}
+    </td>
 <tr>
 
 {% endfor %}
