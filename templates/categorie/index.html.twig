@@ -11,4 +11,13 @@
     <br>
         
     {% endfor %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        
+        <a href="{{ ea_url()
+        .setController('App\\Controller\\Admin\\CategorieCrudController')
+        .setAction('new')
+        }}">Ajouter une nouvelle catégorie</i> </a> 
+
+        {% endif %}
 {% endblock %}

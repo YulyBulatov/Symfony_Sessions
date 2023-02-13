@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de Formateurs{% endblock %}
+
+{% block body %}
+
+<h1>FORMATEURS<h1>
+
+<table>
+<thead>
+
+    <th>NOM</th>
+    <th>Prénom</th>
+    <th>Ville</th>
+    <th>Email</th>
+    <th>Téléphone</th>
+    <th>Supprimer</th>
+
+</thead>
+
+<tbody>
+
+{% for formateur in formateurs %}
+
+<tr>
+    <td><a href="{{path('show_formateur', {id: formateur.id})}}">{{ formateur.nom|upper }}</a></td>
+    <td>{{ formateur.prenom }}</td>
+    <td>{{ formateur.ville }}</td>
+    <td>{{ formateur.email }} </td>
+    <td>{{ formateur.telephone }}</td>
+    <td>
+    {% if is_granted('ROLE_ADMIN') %}
+    
+    <a href="{{path('remove_formateur', {id: formateur.id})}} "><i class="fa fa-remove" aria-hidden="true" style="color:#BA1200"></i></a>
+    {% endif %}
+    </td>
+<tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% endblock %}

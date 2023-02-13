@@ -12,45 +12,6 @@
 
 <br>
 
-<table>
-    <caption>Toutes les sessions</caption>
-    <thead>
-        <th>Statut</th>
-        <th>Formation</th>
-        <th>Session</th>
-        <th>Date de debut</th>
-        <th>Date de fin</th>
-        <th>Inscrits</th>
-        <th>Action</th>
-    </thead>    
-{% for session in  sessions %}
-
-    <tr>
-        <td>{% if session.stagiaire|length == session.nbrePlaces %}
-        SESSION COMPLETE
-        {% endif %}
-        </td>
-        <td>{{ session.formation }} </td>
-        <td><a href="{{path('show_session', {id: session.id})}}"> {{ session }}</a></td>
-        <td>{{ session.dateDebut|date("d/m/Y") }} </td>
-        <td>{{ session.dateFin|date("d/m/Y") }} </td>
-        <td>{{ session.stagiaire|length}}/ {{ session.nbrePlaces}} </td>
-        <td>
-        {% if is_granted('ROLE_ADMIN') %}
-        
-        <a href="{{ ea_url()
-        .setController('App\\Controller\\Admin\\SessionCrudController')
-        .setAction('edit')
-        .setEntityId(session.id)}}"><i class="fa fa-edit" aria-hidden="true" style="color:#FF9505"></i> </a> 
-
-        {% endif %}
-        </td> 
-    </tr>
-
-{% endfor %}
-
-</table>
-
 <br>
 
 <table>
@@ -72,7 +33,7 @@
         SESSION COMPLETE
         {% endif %}
         </td>
-        <td>{{ current_session.formation }} </td>
+        <td><a href="{{path('app_formation')}}">{{ current_session.formation }}</a> </td>
         <td><a href="{{path('show_session', {id: current_session.id})}}"> {{ current_session }}</a></td>
         <td>{{ current_session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ current_session.dateFin|date("d/m/Y") }} </td>
@@ -114,7 +75,7 @@
         SESSION COMPLETE
         {% endif %}
         </td>
-        <td>{{ future_session.formation }} </td>
+        <td><a href="{{path('app_formation')}}">{{ future_session.formation }}</a> </td>
         <td><a href="{{path('show_session', {id: future_session.id})}}"> {{ future_session }}</a></td>
         <td>{{ future_session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ future_session.dateFin|date("d/m/Y") }} </td>
@@ -157,7 +118,7 @@
         SESSION COMPLETE
         {% endif %}
         </td>
-        <td>{{ past_session.formation }} </td>
+        <td><a href="{{path('app_formation')}}">{{ past_session.formation }}</a> </td>
         <td><a href="{{path('show_session', {id: past_session.id})}}"> {{ past_session }}</a> </td>
         <td>{{ past_session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ past_session.dateFin|date("d/m/Y") }} </td>

@@ -12,10 +12,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class SessionController extends AbstractController
 {
     #[Route('/session', name: 'app_session')]
-    public function index(): Response
+    public function index(SessionRepository $sessionRepository): Response
     {
         return $this->render('session/index.html.twig', [
-            'controller_name' => 'SessionController',
+            'sessions' => $sessionRepository->findAll(),
+
         ]);
     }
 

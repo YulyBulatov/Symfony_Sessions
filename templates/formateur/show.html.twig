@@ -1,10 +1,27 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %}Liste de Sessions{% endblock %}
+{% block title %}Formateur {{ formateur }} {% endblock %}
 
 {% block body %}
+
+<h1> {{ formateur.prenom }} {{formateur.nom|upper}} </h1>
+
+<h2>Informations</h2>
+
+<div class="description" id="formateur">
+
+<p>Téléphone: {{formateur.telephone}}</p>
+
+<p>Email: {{formateur.email}}</p>
+
+<p>Adresse: {{formateur.adresse}}, {{formateur.ville}} </p>
+
+</div>
+
+
+
 <table>
-    <caption>Toutes les sessions</caption>
+    <caption>Sessions</caption>
     <thead>
         <th>Statut</th>
         <th>Formation</th>
@@ -14,31 +31,23 @@
         <th>Inscrits</th>
         <th>Action</th>
     </thead>    
-{% for session in  sessions %}
+{% for session in  formateur.sessions %}
 
     <tr>
         <td>{% if session.stagiaire|length == session.nbrePlaces %}
         SESSION COMPLETE
         {% endif %}
         </td>
-        <td><a href="{{path('app_formation')}}">{{ session.formation }}</a> </td>
+        <td><a href="{{path('app_formation')}}">{{ session.formation }} </a></td>
         <td><a href="{{path('show_session', {id: session.id})}}"> {{ session }}</a></td>
         <td>{{ session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ session.dateFin|date("d/m/Y") }} </td>
         <td>{{ session.stagiaire|length}}/ {{ session.nbrePlaces}} </td>
-        <td>
-        {% if is_granted('ROLE_ADMIN') %}
-        
-        <a href="{{ ea_url()
-        .setController('App\\Controller\\Admin\\SessionCrudController')
-        .setAction('edit')
-        .setEntityId(session.id)}}"><i class="fa fa-edit" aria-hidden="true" style="color:#FF9505"></i> </a> 
-
-        {% endif %}
-        </td> 
+        <td> </td> 
     </tr>
 
 {% endfor %}
 
 </table>
+
 {% endblock %}

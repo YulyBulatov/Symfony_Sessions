@@ -19,4 +19,18 @@
     
         
     {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        
+        <a href="{{ ea_url()
+        .setController('App\\Controller\\Admin\\CoursCrudController')
+        .setAction('new')
+        }}">Ajouter un nouveau module</i> </a> 
+
+        {% endif %}
+
 {% endblock %}

@@ -38,7 +38,7 @@
         SESSION COMPLETE
         {% endif %}
         </td>
-        <td>{{ session.formation }} </td>
+        <td><a href="{{path('app_formation')}}">{{ session.formation }}</a> </td>
         <td><a href="{{path('show_session', {id: session.id})}}"> {{ session }}</a></td>
         <td>{{ session.dateDebut|date("d/m/Y") }} </td>
         <td>{{ session.dateFin|date("d/m/Y") }} </td>
