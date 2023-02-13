@@ -8,7 +8,7 @@
 
 <div class="description">
 
-<p class="formateur" >Formateur référent : {{ session.formateur}}</p>
+<p class="formateur" >Formateur référent : <a href="{{path('show_formateur', {id: session.formateur.id})}}">{{ session.formateur}}</a></p>
 
 <p>Date de début: {{ session.dateDebut|date("d/m/Y") }}</p>
 
@@ -111,9 +111,11 @@
     <tr>
         <td>{{module}}</td>
         <td>{{module.categorie}} </td>
-        <td><a href="{{ea_url()
+        <td> {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ea_url()
             .setController('App\\Controller\\Admin\\ProgrammeCrudController')
-            .setAction('new')}}"><i class="fa fa-plus" aria-hidden="true" style="color:#239F5B"></a></td>
+            .setAction('new')}}"><i class="fa fa-plus" aria-hidden="true" style="color:#239F5B"></i></a>
+            {% endif %}</td>
         
     </tr>
         

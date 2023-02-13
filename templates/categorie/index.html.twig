@@ -5,13 +5,20 @@
 {% block body %}
     <h1>Catégories</h1>
 
+    <table>
+    <thead>
+        <th>Nom</th>
+    <tbody>
     {% for categorie in categories %}
-
-    <p><a href="{{path ('show_categorie', {id: categorie.id})}}">{{categorie}}</a></p>
-    <br>
+    <tr>
+        <td><a href="{{path ('show_categorie', {id: categorie.id})}}">{{categorie}}</a></p>
+    </tr>
         
     {% endfor %}
+    </tbody>
+    </table>
 
+    <br>
     {% if is_granted('ROLE_ADMIN') %}
         
         <a href="{{ ea_url()
