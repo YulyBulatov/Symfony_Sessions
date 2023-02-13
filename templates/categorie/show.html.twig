@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{categorie}}{% endblock %}
+
+{% block body %}
+    <h1>{{categorie}}</h1>
+
+    <table>
+        <thead>
+        <th>Modules</th>
+        </thead>
+        <tbody>
+    
+
+    {% for cours in categorie.cours %}
+        <tr>
+            <td>{{cours}}</td>
+        </tr>
+    
+        
+    {% endfor %}
+{% endblock %}

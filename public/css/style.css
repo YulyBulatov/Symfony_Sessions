@@ -12,6 +12,24 @@ body {
     
 }
 
+a {
+    text-decoration: none;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+
+    color: #FCFCFC;
+
+}
+
+a:hover {
+
+    color:rgba(120, 153, 212, 0.53)
+}
+
 nav {
     
     width: 75%;
@@ -28,24 +46,6 @@ ul {
     height: 30px;
     list-style-type: none;
 
-}
-
-nav a {
-    text-decoration: none;
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 25px;
-    text-align: center;
-
-    color: #FCFCFC;
-
-}
-
-nav a:hover{
-
-    color:rgba(120, 153, 212, 0.53)
 }
 
 h1, h2, h3, h4, h5, h6{
