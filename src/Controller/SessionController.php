@@ -30,5 +30,16 @@ class SessionController extends AbstractController
         ]);
     }
 
+    #[Route('/session/{id_stagiaire}/{id_session}', name: 'desinscrire_stagiaire_session')]
+    public function desinscrireStagiaire($id_stagiaire, $id_session, SessionRepository $sessionRepository): Response
+    {
+        $sessionRepository->desinscrire($id_stagiaire, $id_session);
+
+
+        return $this->redirectToRoute('show_session', ['id' => $id_session]);
+
+
+    }    
+
 
 }

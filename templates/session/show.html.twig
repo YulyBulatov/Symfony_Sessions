@@ -32,7 +32,7 @@
 
     <tr>
         <td><a href="{{path('show_stagiaire', {id: stagiaire.id})}}">{{stagiaire}}</a></td>
-        <td> </td>
+        <td><a href="{{path('desinscrire_stagiaire_session', {id_stagiaire: stagiaire.id, id_session: session.id})}}"><i class="fa fa-remove" aria-hidden="true" style="color:#BA1200"></i> </td>
     </tr>
         
     {% endfor %}
