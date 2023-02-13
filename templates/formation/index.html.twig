@@ -23,24 +23,32 @@
 <tr>
     <td> {{formation}} </td>
     <td> {% for session in formation.sessions %}
-        {% if session.dateDebut %}{% endif %}
+            {% if "now"|date("U") >= session.dateDebut|date("U")  and "now"|date("U") <= session.dateFin|date("U") %}
+                <a href="{{path('show_session', {id: session.id})}}">{{session}}</a>
+            {% endif %}     
         
-    {% endfor %}</td>
-    <td>{{ stagiaire.ville }}</td>
-    <td>{{ stagiaire.email }} </td>
-    <td>{{ stagiaire.telephone }}</td>
-    <td>
-    {% if is_granted('ROLE_ADMIN') %}
-    
-    <a href="{{path('remove_stagiaire', {id: stagiaire.id})}} "><i class="fa fa-remove" aria-hidden="true" style="color:#BA1200"></i></a>
-    {% endif %}
+        {% endfor %}
     </td>
-<tr>
+    <td>{% for session in formation.sessions %}
+            {% if "now"|date("U") > session.dateFin|date("U")   %}
+                <a href="{{path('show_session', {id: session.id})}}">{{session}}</a>
+            {% endif %}     
+        
+        {% endfor %}</td>
+    <td>{% for session in formation.sessions %}
+            {% if "now"|date("U") < session.dateDebut|date("U") %}
+                <a href="{{path('show_session', {id: session.id})}}">{{session}}</a>
+            {% endif %}     
+        
+        {% endfor %} </td>
+
+</tr>
 
 {% endfor %}
 
 </tbody>
 
 </table>
+
 
 {% endblock %}
