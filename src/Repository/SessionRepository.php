@@ -66,22 +66,6 @@ class SessionRepository extends ServiceEntityRepository
 
     }
 
-    public function desinscrire($id_stagiare, $id_session)
-    {
-        $query = $this->getEntityManager()->createQueryBuilder()->update('App\Entity\Session', 's')
-        ->set('s.stagiaire.session_id', '0')
-        ->set('s.stagiare.stagiaire_id', '0')
-        ->andWhere('s.stagiaire.session_id = :sessionId')
-        ->andWhere('s.stagiare.stagiaire_id = :stagiaireId')
-        ->setParameters(array(
-        'sessionId' => $id_session,
-        'stagiaireId' => $id_stagiare))
-        ->getQuery();
-
-        return $query->execute();
-    }
-
-
 
     
 

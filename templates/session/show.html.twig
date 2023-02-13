@@ -4,6 +4,8 @@
 
 {% block body %}
 
+<h1>{{ session }} </h1>
+
 <div class="description">
 
 <p class="formateur" >Formateur référent : {{ session.formateur}}</p>
@@ -32,7 +34,14 @@
 
     <tr>
         <td><a href="{{path('show_stagiaire', {id: stagiaire.id})}}">{{stagiaire}}</a></td>
-        <td><a href="{{path('desinscrire_stagiaire_session', {id_stagiaire: stagiaire.id, id_session: session.id})}}"><i class="fa fa-remove" aria-hidden="true" style="color:#BA1200"></i> </td>
+        <td>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ ea_url()
+            .setController('App\\Controller\\Admin\\SessionCrudController')
+            .setAction('edit')
+            .setEntityId(session.id)}}"><i class="fa fa-remove" aria-hidden="true" style="color:#BA1200"></i> 
+        {% endif %}    
+        </td>
     </tr>
         
     {% endfor %}
@@ -55,7 +64,9 @@
         <td>{{module.cours}}</td>
         <td>{{module.cours.categorie}} </td>
         <td class="duree">{{module.duree}}</td>
-        <td> </td>
+        <td>{% if is_granted('ROLE_ADMIN') %}
+            <a href="{{path('remove_programme', {id: session.id, id_programme: module.id})}}"><i class="fa fa-remove" aria-hidden="true" style="color:#BA1200"></i> 
+        {% endif %} </td>
     </tr>
         
     {% endfor %}
@@ -74,7 +85,12 @@
 
     <tr>
         <td><a href="{{path('show_stagiaire', {id: stagiaire.id})}}">{{stagiaire}}</a></td>
-        <td> </td>
+        <td>{% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ ea_url()
+            .setController('App\\Controller\\Admin\\SessionCrudController')
+            .setAction('edit')
+            .setEntityId(session.id)}}"><i class="fa fa-plus" aria-hidden="true" style="color:#239F5B"></i> 
+        {% endif %} </td>
     </tr>
         
     {% endfor %}
@@ -86,7 +102,6 @@
     <thead>
         <th>Module</th>
         <th>Catégorie</th>
-        <th>Durée</th>
         <th>Programmer</th>
     </thead>
     <tbody>
@@ -96,8 +111,10 @@
     <tr>
         <td>{{module}}</td>
         <td>{{module.categorie}} </td>
-        <td><input type="text" name"duree"></input> jours </td>
-        <td><input type="submit" name="submit"></input></td>
+        <td><a href="{{ea_url()
+            .setController('App\\Controller\\Admin\\ProgrammeCrudController')
+            .setAction('new')}}"><i class="fa fa-plus" aria-hidden="true" style="color:#239F5B"></a></td>
+        
     </tr>
         
     {% endfor %}
